@@ -25,7 +25,6 @@ describe("Temperature Conversion", function () {
 
 describe("Greeting Tests", function () {
   describe("getGreetingDependOnTime()", function () {
-    // ✅ KORRIGIERT: Um 12:00 (Tag) sollte "Guten Morgen" kommen
     it("should return 'Guten Morgen' at 12:00 (daytime)", function () {
       const date = new Date("2020-01-01 12:00:00");
       expect(apiTemperature.getGreetingDependOnTime(date)).to.equal(
@@ -33,7 +32,6 @@ describe("Greeting Tests", function () {
       );
     });
 
-    // ✅ KORRIGIERT: Um 23:00 (Nacht/Abend) sollte "Guten Abend" kommen
     it("should return 'Guten Abend' at 23:00 (evening/night)", function () {
       const date = new Date("2020-01-01 23:00:00");
       expect(apiTemperature.getGreetingDependOnTime(date)).to.equal(

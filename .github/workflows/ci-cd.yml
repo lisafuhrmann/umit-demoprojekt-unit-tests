@@ -31,4 +31,15 @@ jobs:
         run: npm test
 
       - name: Build Success
-        run: echo "Build and tests completed successfully!"
+        run: echo "✅ Build and tests completed successfully!"
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to Render
+        run: |
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+          echo "🚀 Deployment triggered on Render!"
